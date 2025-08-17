@@ -1,13 +1,12 @@
 import json
 
+
 def get_zad():
     with open("tasks.json","r", encoding="utf-8") as file:
         tasks = json.load(file)
-    k = 1
 
     for task in tasks:
-        print(f"[{k}] Название: {task['title']}")
-        k +=1
+        print(f"[{task['id']}]Название: {task['title']}")
         print(f"Описание: {task['description']}")
         print(f"Дедлайн: {task['deadline']}")
         print("-" * 32)
@@ -23,6 +22,17 @@ def search():
         all_text = f"{task['title']} {task['description']}"
 
         if ab in all_text:
-            print(f"Найдено!\n[{k}]Название: {task['title']}\nОписание: {task['description']}\nДедлайн: {task['deadline']}")
+            print(f"Найдено!\n[{task['id']}]Название: {task['title']}\nОписание: {task['description']}\nДедлайн: {task['deadline']}")
 
 
+def delete():
+    with open("tasks.json","r",encoding="utf-8") as file:
+        tasks = json.load(file)
+
+    a = int(input("Введите id задачи, которую хотите удалить: "))
+    tasks = [task for task in tasks if task.get("id") != a]
+
+    with open("tasks.json","w",encoding="utf-8") as file:
+        json.dump(tasks,file,indent=4,ensure_ascii=False)
+
+    print(f"Задача {a} - удалена!")

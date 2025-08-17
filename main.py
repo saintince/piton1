@@ -6,5 +6,6 @@ while True:
     if ch == 1: print(task.choose())
     if ch == 2: print(function.get_zad())
     if ch == 3: print(function.search())
+    if ch == 4: print(function.delete())
 
 
