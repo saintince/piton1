@@ -11,6 +11,8 @@ def get_zad():
         print(f"Дедлайн: {task['deadline']}")
         print("-" * 32)
 
+
+
 def search():
     with open("tasks.json","r", encoding="utf-8") as file:
         tasks = json.load(file)
@@ -26,13 +28,19 @@ def search():
 
 
 def delete():
-    with open("tasks.json","r",encoding="utf-8") as file:
-        tasks = json.load(file)
+    try:
+        with open("tasks.json","r",encoding="utf-8") as file:
+            tasks = json.load(file)
 
-    a = int(input("Введите id задачи, которую хотите удалить: "))
-    tasks = [task for task in tasks if task.get("id") != a]
+        a = int(input("Введите id задачи, которую хотите удалить: "))
+        tasks = [task for task in tasks if task.get("id") != a]
 
-    with open("tasks.json","w",encoding="utf-8") as file:
-        json.dump(tasks,file,indent=4,ensure_ascii=False)
+        with open("tasks.json","w",encoding="utf-8") as file:
+            json.dump(tasks,file,indent=4,ensure_ascii=False)
 
-    print(f"Задача {a} - удалена!")
+        print(f"Задача №{a} - удалена!")
+
+    except ValueError:
+        print("Ошибка: введите id!")
+
+
