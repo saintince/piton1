@@ -1,19 +1,21 @@
 import json
 import os
 class Task:
-    def __init__(self, title, description, deadline):
+    def __init__(self, title, description, deadline, id):
         self.title = title
         self.description = description
         self.deadline = deadline
+        self.id = id
 
     def __str__(self):
-        return f"Task: {self.title}\n{self.description}\n{self.deadline}"
+        return f"Task: {self.title}\n{self.description}\n{self.deadline}\n{self.id}"
 
     def to_dict(self):
         return {
             "title": self.title,
             "description": self.description,
             "deadline": self.deadline,
+            "id": self.id
         }
 
 def save_task(task):
@@ -36,7 +38,8 @@ def save_task(task):
 def choose():
     t = str(input("Введите название:\n"))
     d = str(input("Введите описание:\n"))
-    dl = str(input("Введите дедлайн (YYYY-MM-DD):\n"))
+    dl = str(input("Введите дедлайн (YY-MM-DD):\n"))
+    i = int(input("Введите id: "))
     task = Task(t,d,dl)
     print(task)
 

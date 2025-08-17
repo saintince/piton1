@@ -4,5 +4,10 @@
         "description": "ыы",
         "deadline": "12.12.12",
         "status": "ычч"
+    },
+    {
+        "title": "сходить в магазин",
+        "description": "купить хлеб и масло",
+        "deadline": "2025.08.16"
     }
 ]
